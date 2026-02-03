@@ -429,7 +429,7 @@ export class BaileysStartupService extends ChannelStartupService {
       const shouldReconnect = !codesToNotReconnect.includes(statusCode);
 
       // Check if this is the initial connection before QR code generation
-      const isInitialConnection = !this.instance.wuid && this.instance.qrcode.count === 0;
+      const isInitialConnection = !this.instance.wuid && (this.instance.qrcode?.count ?? 0) === 0;
 
       if (isInitialConnection) {
         this.logger.info('Initial connection closed, waiting for QR code generation...');
